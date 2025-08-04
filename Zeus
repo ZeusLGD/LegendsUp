@@ -472,6 +472,22 @@ Tabs.Rebirth:AddToggle("FastRebirthsToggle", {
     end
 end)
 
+Tabs.Rebirth:AddToggle("FastStrengthToggle", {
+    Title = "Fast Strength (Need 7-8 Packs)",
+    Default = false
+}):OnChanged(function(state)
+    if state then
+        local success, err = pcall(function()
+		
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ZeusLGD/Fast-Strength/refs/heads/main/Zeus"))()
+        end)
+        if not success then
+            warn("[Fast Rebirths] Erro ao carregar script externo:", err)
+        end
+    end
+end)
+
+
 -- Hide All Frames
 Tabs.Rebirth:AddToggle("HideFramesToggle", {
     Title = "Hide All Frames",
