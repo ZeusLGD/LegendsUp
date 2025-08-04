@@ -17,8 +17,8 @@ local InterfaceManager = safeLoad("https://raw.githubusercontent.com/ActualMaste
 if not Library then return end
 
 local Window = Library:CreateWindow{
-    Title = "𝐋𝐞𝐠𝐞𝐧𝐝𝐬 𝐒𝐭𝐨𝐫𝐞",
-    SubTitle = "| 𝐁𝐲 𝐙𝐞𝐮𝐬",
+    Title = "𝐿𝑒𝑔𝑒𝑛𝑑𝑠 𝑆𝑡𝑜𝑟𝑒",
+    SubTitle = "| 𝐵𝑦 𝑍𝑒𝑢𝑠𝐿𝐺𝐷",
     TabWidth = 160,
     Size = UDim2.fromOffset(1087, 690.5),
     Resize = true,
