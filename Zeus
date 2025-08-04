@@ -17,7 +17,7 @@ local InterfaceManager = safeLoad("https://raw.githubusercontent.com/ActualMaste
 if not Library then return end
 
 local Window = Library:CreateWindow{
-    Title = "Legends Store",
+    Title = "Legends Hub",
     SubTitle = "| By ZeusLGD",
     TabWidth = 160,
     Size = UDim2.fromOffset(1087, 690.5),
@@ -414,7 +414,7 @@ end)
 
 Tabs.Rebirth:AddSection("Auto Rebirth")
 
--- Auto Rebirth Infinito
+-- Auto Rebirth
 Tabs.Rebirth:AddToggle("AutoRebirthToggle", {
     Title = "Auto Rebirth",
     Default = false
