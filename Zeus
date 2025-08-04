@@ -477,13 +477,16 @@ Tabs.Rebirth:AddToggle("FastStrengthToggle", {
     Default = false
 }):OnChanged(function(state)
     if state then
+        _G.fastGrindActive = true
         local success, err = pcall(function()
-		
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ZeusLGD/Fast-Strength/refs/heads/main/Zeus"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/ZeusLGD/Fast-Strength/refs/heads/main/Zeus"))()
         end)
         if not success then
-            warn("[Fast Rebirths] Erro ao carregar script externo:", err)
+            warn("[Fast Strength] Erro ao carregar script externo:", err)
         end
+    else
+        _G.fastGrindActive = false
+        print("Fast Strength desativado.")
     end
 end)
 
