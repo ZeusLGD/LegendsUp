@@ -1079,7 +1079,7 @@ local function abbreviateNumber(value)
     end
 end
 
--- Paragraph containers
+-- Parágrafo para Rebirths
 local paragraphs = {
     TimeSpent = Tabs.Status:CreateParagraph("TimeSpent", {
         Title = "Time Spent",
@@ -1122,6 +1122,12 @@ local paragraphs = {
         Content = "Good Karma gained: 0",
         TitleAlignment = "Middle",
         ContentAlignment = Enum.TextXAlignment.Center
+    }),
+    RebirthsGained = Tabs.Status:CreateParagraph("RebirthsGained", {
+        Title = "Rebirths",
+        Content = "Rebirths gained: 0",
+        TitleAlignment = "Middle",
+        ContentAlignment = Enum.TextXAlignment.Center
     })
 }
 
@@ -1131,6 +1137,7 @@ local function createMyParagraphStats()
 
     local leaderstats = player:WaitForChild("leaderstats")
     local strengthStat = leaderstats:WaitForChild("Strength")
+    local rebirthsStat = leaderstats:WaitForChild("Rebirths")
     local durabilityStat = player:WaitForChild("Durability")
     local agilityStat = player:WaitForChild("Agility")
     local killsStat = leaderstats:WaitForChild("Kills")
@@ -1138,6 +1145,7 @@ local function createMyParagraphStats()
     local goodKarmaStat = player:WaitForChild("goodKarma")
 
     local initialStrength = strengthStat.Value
+    local initialRebirths = rebirthsStat.Value
     local initialDurability = durabilityStat.Value
     local initialAgility = agilityStat.Value
     local initialKills = killsStat.Value
@@ -1148,6 +1156,7 @@ local function createMyParagraphStats()
 
     local function updateParagraphs()
         paragraphs.StrengthGained:SetContent("Strength gained: " .. abbreviateNumber(strengthStat.Value - initialStrength))
+        paragraphs.RebirthsGained:SetContent("Rebirths gained: " .. abbreviateNumber(rebirthsStat.Value - initialRebirths))
         paragraphs.DurabilityGained:SetContent("Durability gained: " .. abbreviateNumber(durabilityStat.Value - initialDurability))
         paragraphs.AgilityGained:SetContent("Agility gained: " .. abbreviateNumber(agilityStat.Value - initialAgility))
         paragraphs.KillsGained:SetContent("Kills gained: " .. abbreviateNumber(killsStat.Value - initialKills))
@@ -1162,15 +1171,16 @@ local function createMyParagraphStats()
         paragraphs.TimeSpent:SetContent(string.format("Time spent in this server: %02d:%02d", minutes, seconds))
     end
 
-    -- Connect stat changes to updates
+    -- Conectar atualizações
     strengthStat.Changed:Connect(updateParagraphs)
+    rebirthsStat.Changed:Connect(updateParagraphs)
     durabilityStat.Changed:Connect(updateParagraphs)
     agilityStat.Changed:Connect(updateParagraphs)
     killsStat.Changed:Connect(updateParagraphs)
     evilKarmaStat.Changed:Connect(updateParagraphs)
     goodKarmaStat.Changed:Connect(updateParagraphs)
 
-    -- Update loop for time
+    -- Atualização contínua do tempo
     game:GetService("RunService").Heartbeat:Connect(updateTimeSpent)
 
     -- Initial refresh
